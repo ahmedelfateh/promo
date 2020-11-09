@@ -3,8 +3,6 @@ from typing import Type
 from django.utils import timezone
 from django.db import models
 
-# from promo.users.models import User
-
 # Create your models here.
 class Promo(models.Model):
     class Type(models.TextChoices):

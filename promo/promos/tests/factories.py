@@ -1,12 +1,10 @@
 import factory
-import factory.fuzzy
-
-
+from factory.django import DjangoModelFactory
 from promo.users.tests.factories import UserFactory
 from promo.promos.models import Promo
 
 
-class ShipmentFactory(factory.django.DjangoModelFactory):
+class PromoFactory(DjangoModelFactory):
     promo_type = "CV"
     promo_code = "2134"
     creation_time = "2020-11-07"
@@ -15,7 +13,7 @@ class ShipmentFactory(factory.django.DjangoModelFactory):
     promo_amount = 13
     is_active = True
     description = "new promo"
-    user = factory.SubFactory("UserFactory")
+    user = factory.SubFactory(UserFactory)
 
     class Meta:
         model = Promo

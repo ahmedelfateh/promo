@@ -11,11 +11,11 @@ from .views import (
 
 urlpatterns = [
     # admin endpoints
-    path("", PromoAPIListView.as_view()),
-    path("<int:id>/", PromoAPIDetailView.as_view()),
+    path("", PromoAPIListView.as_view(), name="promo-list"),
+    path("<int:pk>/", PromoAPIDetailView.as_view(), name="promo"),
     # noraml endpoints
-    path("me/", PromoMeAPIView.as_view()),
-    path("<int:id>/use/", UsePromoAPIView.as_view()),
-    path("<int:id>/point/", PromoMeRemainingView.as_view()),
-    path("<int:id>/get/", GetPromoView.as_view()),
+    path("me/", PromoMeAPIView.as_view(), name="promo-me"),
+    path("<int:pk>/use/", UsePromoAPIView.as_view(), name="use-promo"),
+    path("<int:pk>/point/", PromoMeRemainingView.as_view(), name="remain-point"),
+    path("<int:pk>/get/", GetPromoView.as_view(), name="get-promo"),
 ]
