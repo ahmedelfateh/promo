@@ -1,0 +1,28 @@
+version: '3'
+
+volumes:
+  postgres_data: {}
+
+services:
+  app: &app
+    build:
+      context: .
+      dockerfile: ./docker/local/Dockerfile
+    image: api_app
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    environment:
+      IPYTHONDIR: /app/.ipython
+      POSTGRES_USER: api
+    ports:
+      - 8000:8000
+    command: /start-app.sh
+
+  postgres:
+    image: postgres:11.3
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: api
